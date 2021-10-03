@@ -40,6 +40,8 @@
 #include "AddBookmarkDialog.h"
 #include "BookmarkManagerDialog.h"
 
+#include "VFODialWorker.h"
+
 namespace SigDigger {
   struct AppUI {
     Ui_MainWindow *main = nullptr;
@@ -57,6 +59,8 @@ namespace SigDigger {
     BackgroundTasksDialog *backgroundTasksDialog = nullptr;
     AddBookmarkDialog *addBookmarkDialog = nullptr;
     BookmarkManagerDialog *bookmarkManagerDialog = nullptr;
+
+    KnobInterface *ki = nullptr;
 
     std::map<Suscan::InspectorId, Inspector *> inspectorTable;
     Suscan::InspectorId lastId = 0;

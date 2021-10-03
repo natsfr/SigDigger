@@ -357,6 +357,7 @@ UIMediator::UIMediator(QMainWindow *owner, AppUI *ui)
   this->connectInspectorPanel();
   this->connectDeviceDialog();
   this->connectPanoramicDialog();
+  this->connectKnob();
 }
 
 void

@@ -79,6 +79,8 @@ namespace SigDigger {
     void connectDeviceDialog(void);
     void connectPanoramicDialog(void);
 
+    void connectKnob(void);
+
     void refreshUI(void);
 
     // Behavioral methods
@@ -290,6 +292,9 @@ namespace SigDigger {
     void onPanoramicSpectrumStart(void);
     void onPanoramicSpectrumStop(void);
     void onPanoramicSpectrumDetailChanged(qint64 min, qint64 max, bool);
+
+    // Knob system
+    void onFreqInc(qint64 delta);
   };
 };
 

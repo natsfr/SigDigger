@@ -47,6 +47,9 @@ AppUI::AppUI(QMainWindow *owner)
   this->backgroundTasksDialog = new BackgroundTasksDialog(owner);
   this->addBookmarkDialog = new AddBookmarkDialog(owner);
   this->bookmarkManagerDialog = new BookmarkManagerDialog(owner);
+  this->ki = new KnobInterface(owner);
+  this->ki->Init();
+  this->ki->start();
 }
 
 void

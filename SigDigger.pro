@@ -97,6 +97,7 @@ SOURCES += \
     Misc/Palette.cpp \
     Misc/SNREstimator.cpp \
     Misc/SigDiggerHelpers.cpp \
+    Misc/VFODialWorker.cpp \
     Suscan/CancellableTask.cpp \
     Suscan/Messages/ChannelMessage.cpp \
     Suscan/Messages/GenericMessage.cpp \
@@ -129,6 +130,7 @@ SOURCES += \
     UIMediator/SourceMediator.cpp \
     UIMediator/SpectrumMediator.cpp \
     UIMediator/UIMediator.cpp \
+    UIMediator/VFOKnobMediator.cpp \
     main.cpp \
     Components/EstimatorControl.cpp \
     Misc/GenericDataSaver.cpp \
@@ -236,6 +238,7 @@ HEADERS += \
     include/FileDataSaver.h \
     include/SocketForwarder.h \
     include/NetForwarderUI.h \
+    include/VFODialWorker.h \
     include/Version.h \
     include/WaitingSpinnerWidget.h \
     include/DeviceDialog.h \
@@ -326,7 +329,7 @@ packagesExist(alsa):!freebsd {
   }
 }
 
-unix: LIBS += -L$$SUWIDGETS_INSTALL_LIBS -lsuwidgets
+unix: LIBS += -L$$SUWIDGETS_INSTALL_LIBS -lsuwidgets -L/usr/lib/libvfoknob -lvfoknob -lhidapi-hidraw
 
 DISTFILES += \
     icons/icon-alpha.png \
