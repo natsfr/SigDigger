@@ -29,17 +29,33 @@ void KnobInterface::display(uint8_t x, uint8_t y, uint8_t *str, uint8_t len) {
 
 void KnobInterface::run() {
     int16_t basic_divider = 0;
-    int16_t delta = 0;
     while(true) {
         HID_VFO_Report * pReport = read_report(this->hknob);
         basic_divider += pReport->smooth;
+        if(pReport->buttons & 1) {
+            switch(increment) {
+                case 10:
+                    increment = 100;
+                    break;
+                case 100:
+                    increment = 1000;
+                    break;
+                case 1000:
+                    increment = 10000;
+                    break;
+                case 10000:
+                    increment = 100000;
+                    break;
+                default:
+                    increment = 10;
+                break;
+            }
+        }
         if(basic_divider > 150) {
-            delta++;
-            emit(incFreq(100));
+            emit(incFreq(increment));
             basic_divider = 0;
         } else if(basic_divider < -150) {
-            delta--;
-            emit(incFreq(-100));
+            emit(incFreq(-increment));
             basic_divider = 0;
         }
         mutex.lock();

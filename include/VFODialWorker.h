@@ -21,6 +21,7 @@ private:
     hid_device * hknob;
 
     uint16_t buttons = 0;
+    uint64_t increment = 10;
 
     QMutex mutex;
 
